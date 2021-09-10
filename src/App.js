@@ -6,10 +6,31 @@ const Button = ({ onClick, text }) => {
   )
 }
 
-const Display = ({ stat, text }) => {
+const Stats = ({ good, neutral, bad, count }) => {
+  if (count === 0) {
+    return (
+      <div>
+        No feedback given
+      </div>
+    )
+  }
+
   return (
     <div>
-      {text} {stat}
+      <Display value={good} text='Good' />
+      <Display value={neutral} text='Neutral' />
+      <Display value={bad} text='Bad' />
+      <Display value={count} text='Count' />
+      <Display value={(good - bad) / count} text='Average' />
+      <Display value={((good / count) * 100) + " %"} text='Positive' />
+    </div>
+  )
+}
+
+const Display = ({ value, text }) => {
+  return (
+    <div>
+      {text} {value}
     </div>
   )
 }
@@ -38,21 +59,14 @@ const App = () => {
 
   return (
     <div>
-      <h1>give feedback</h1>
+      <h1>Give feedback</h1>
       <div>
-        <Button onClick={handleGood} text='good'></Button>
-        <Button onClick={handleNeutral} text='neutral'></Button>
-        <Button onClick={handleBad} text='bad'></Button>
+        <Button onClick={handleGood} text='Good'></Button>
+        <Button onClick={handleNeutral} text='Neutral'></Button>
+        <Button onClick={handleBad} text='Bad'></Button>
       </div>
-      <div>
-        <h1>Statistics</h1>
-        <Display stat={good} text='good' />
-        <Display stat={neutral} text='neutral' />
-        <Display stat={bad} text='bad' />
-        <Display stat={count} text='count' />
-        <Display stat={(good - bad) / count} text='average' />
-        <Display stat={((good / count) * 100) + " %"} text='positive' />
-      </div>
+      <h1>Statistics</h1>
+      <Stats good={good} neutral={neutral} bad={bad} count={count} />
     </div>
   )
 }
