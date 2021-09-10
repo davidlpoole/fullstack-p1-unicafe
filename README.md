@@ -19,3 +19,11 @@ Refactor your application so that displaying the statistics is extracted into it
 ## 1.9: unicafe step4
 
 Change your application to display statistics only once feedback has been gathered.
+
+## 1.10L unicafe step5
+
+refactor buttons and individual stats (already done)
+
+## 1.11: unicafe step6
+
+Display the statistics in an HTML table

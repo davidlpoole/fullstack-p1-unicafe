@@ -17,21 +17,23 @@ const Stats = ({ good, neutral, bad, count }) => {
 
   return (
     <div>
-      <Display value={good} text='Good' />
-      <Display value={neutral} text='Neutral' />
-      <Display value={bad} text='Bad' />
-      <Display value={count} text='Count' />
-      <Display value={(good - bad) / count} text='Average' />
-      <Display value={((good / count) * 100) + " %"} text='Positive' />
+      <table><tbody>
+        <Display value={good} text='Good' />
+        <Display value={neutral} text='Neutral' />
+        <Display value={bad} text='Bad' />
+        <Display value={count} text='Count' />
+        <Display value={(good - bad) / count} text='Average' />
+        <Display value={((good / count) * 100) + " %"} text='Positive' />
+      </tbody></table>
     </div>
   )
 }
 
 const Display = ({ value, text }) => {
   return (
-    <div>
-      {text} {value}
-    </div>
+    <tr>
+      <td>{text}</td><td>{value}</td>
+    </tr>
   )
 }
 
